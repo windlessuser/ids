@@ -18,18 +18,26 @@ class Home_model extends CI_model{
 		$this->db->order_by('Site.rank','asc');
 		$this->db->limit(10);
 		
-		$result = $this->db->get()->row_array();
-		
 		$this->db->trans_complete();
 		
-		return $result;
+		return $this->db->get()->row_array();
 	}
 	
 	function get_weather_feeds(){
 		
 		$dom = new DOMDocument();
 		$dom->load("http://rss.weather.com/weather/rss/local/JMXX0002?cm_ven=LWO&cm_cat=rss&par=LWO_rss");
-		return $dom->saveXML();
+		$arrFeeds = array();
+		foreach ($doc->getElementsByTagName('item') as $node) {
+			$itemRSS = array (
+			'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
+			'desc' => $node->getElementsByTagName('description')->item(0)->nodeValue,
+			'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
+			'date' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue
+			);
+			array_push($arrFeeds, $itemRSS);
+		}
+		return $this->__processFeed($arrFeeds);
 	}
 	
 	function get_airline_feeds(){
@@ -38,5 +46,19 @@ class Home_model extends CI_model{
 	
 	function get_hotel_feeds(){
 		return "";
+	}
+	
+	function __processFeed($feed,$max = 5){
+		$output = "";
+		$numFeeds =0;
+		foreach ($feed as $report) {
+			if ($numFeeds == $max) { break;}
+			foreach ($report as $item) {
+				$output .= "" . $item . "<br />";
+			}
+			$output .= "<br /><br />";
+			$numFeeds++;
+		}
+		return $output;
 	}
 }
