@@ -1,0 +1,229 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 14, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 17, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+
+/* line 19, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 21, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 23, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 25, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: "" "";
+}
+/* line 96, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+}
+
+/* line 27, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+@charset "UTF-8";
+@import url(compass/typography/lists/bullets.css);
+/* line 11, ../sass/screen.scss */
+user_data {
+  position: absolute;
+  top: 85px;
+  right: 0;
+  font-size: 12px;
+}
+
+/* line 18, ../sass/screen.scss */
+body {
+  background-color: #8daedd;
+}
+
+/* line 22, ../sass/screen.scss */
+table {
+  border: 3px solid black;
+  position: relative;
+  top: 75px;
+  left: 10%;
+}
+/* line 4, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/tables/_borders.scss */
+table thead th {
+  border-bottom: 3px solid black;
+}
+/* line 7, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/tables/_borders.scss */
+table tfoot th, table tfoot td {
+  border-top: 3px solid black;
+}
+/* line 10, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/tables/_borders.scss */
+table th:first-child {
+  border-right: 3px solid black;
+}
+/* line 14, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/tables/_borders.scss */
+table th, table td {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left-width: 0px;
+  border-top-width: 0px;
+}
+/* line 21, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/tables/_borders.scss */
+table th:last-child, table th.last, table td:last-child, table td.last {
+  border-right-width: 0px;
+}
+/* line 26, ../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/tables/_borders.scss */
+table tbody tr:last-child th, table tbody tr:last-child td,
+table tbody tr.last th,
+table tbody tr.last td, table tfoot tr:last-child th, table tfoot tr:last-child td, table tfoot tr.last th, table tfoot tr.last td {
+  border-bottom-width: 0px;
+}
+
+/* line 30, ../sass/screen.scss */
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+/* line 36, ../sass/screen.scss */
+th {
+  padding: 10px;
+  text-align: center;
+}
+
+/* line 41, ../sass/screen.scss */
+ol {
+  position: relative;
+  top: 100px;
+  left: 40%;
+  right: 50%;
+}
+
+/* line 47, ../sass/screen.scss */
+li {
+  position: relative;
+  padding: 6px;
+}
+
+/* line 52, ../sass/screen.scss */
+.form {
+  margin: 25px 0 0 0;
+  display: block;
+  position: relative;
+  width: 200px;
+  top: 75px;
+  left: 40%;
+  right: 50%;
+}
+
+/* line 62, ../sass/screen.scss */
+#login_form {
+  -moz-box-sizing: login_form;
+  -webkit-box-sizing: login_form;
+  -ms-box-sizing: login_form;
+  box-sizing: login_form;
+  border: 1px solid white;
+  padding: 1em;
+  -webkit-border-radius: 3 3;
+  -moz-border-radius: 3 / 3;
+  -o-border-radius: 3 / 3;
+  -ms-border-radius: 3 / 3;
+  -khtml-border-radius: 3 / 3;
+  border-radius: 3 / 3;
+  background: #f0f0f0 repeat-x 0 0;
+}
+
+/* line 70, ../sass/screen.scss */
+#new_site_form {
+  width: 239px;
+  border: 1px solid white;
+  padding: 1em;
+  -webkit-border-radius: 3 3;
+  -moz-border-radius: 3 / 3;
+  -o-border-radius: 3 / 3;
+  -ms-border-radius: 3 / 3;
+  -khtml-border-radius: 3 / 3;
+  border-radius: 3 / 3;
+  background: #f0f0f0 repeat-x 0 0;
+}
+
+/* line 79, ../sass/screen.scss */
+#address input[type=text] {
+  width: 200px;
+}
+
+/*
+input[type=text], input[type=password] {
+  margin: 0 0 1em 0;
+  width: 180px;
+  border: 5px;
+  @include border-radius(1,1);
+  padding: 1em;
+}
+
+input[type=submit]{
+  border: none;
+  margin-right: 1em;
+  padding: 6px;
+  text-decoration: none;
+  font-size: 12px;
+  @include border-radius(4,4);
+  background: #348075;
+  color: white;
+  @include box-shadow(white);
+
+}
+
+input[type=submit]:hover{
+  background: #287368;
+  cursor: pointer;
+}
+*/
+/* line 111, ../sass/screen.scss */
+.clearfooter {
+  height: 25px;
+  clear: both;
+}
+
+/* line 116, ../sass/screen.scss */
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 9px;
+}

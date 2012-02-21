@@ -1,3 +1,5 @@
+    <div class="clearfooter"></div>
+
     <footer>
 			<span>Copyright © 2011, Carib Tech Solutions</span>
     </footer>

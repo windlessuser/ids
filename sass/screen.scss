@@ -1,0 +1,121 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/tables/borders";
+@import "compass/typography/lists/bullets";
+
+user_data{
+position:absolute;
+top: 85px;
+	right:0;
+	font-size: 12px;
+}
+
+body{
+  background-color: #8daedd;
+}
+
+table{
+@include outer-table-borders(3px);
+@include inner-table-borders(1px, #000000);
+position: relative;
+top:75px;
+left:10%;
+}
+td
+{
+ padding:10px;
+ text-align:center;
+
+}
+
+th{
+    padding:10px;
+    text-align:center;
+    }
+
+ol{
+    position: relative;
+    top:100px;
+    left:40%;
+    right:50%;
+}
+li{
+    position: relative;
+    padding:6px;
+    }
+
+.form{
+  margin: 25px 0 0 0;
+  display: block;
+  position: relative;
+  width: 200px;
+  top:75px;
+  left:40%;
+  right:50%;
+}
+
+#login_form{
+  @include box-sizing(login_form);
+  border: 1px solid white;
+  padding: 1em;
+  @include border-radius(3,3);
+  background: #f0f0f0 repeat-x 0 0;
+}
+
+#new_site_form{
+  width: 239px;
+  border: 1px solid white;
+  padding: 1em;
+  @include border-radius(3,3);
+  background: #f0f0f0 repeat-x 0 0;
+  }
+  
+  #address{
+	input[type=text]{
+     	 	width: 200px;
+      }
+}
+
+/*
+input[type=text], input[type=password] {
+  margin: 0 0 1em 0;
+  width: 180px;
+  border: 5px;
+  @include border-radius(1,1);
+  padding: 1em;
+}
+
+input[type=submit]{
+  border: none;
+  margin-right: 1em;
+  padding: 6px;
+  text-decoration: none;
+  font-size: 12px;
+  @include border-radius(4,4);
+  background: #348075;
+  color: white;
+  @include box-shadow(white);
+
+}
+
+input[type=submit]:hover{
+  background: #287368;
+  cursor: pointer;
+}
+*/
+.clearfooter {
+height: 25px;
+clear: both;
+}
+
+footer{
+  position:absolute;
+  bottom:0;
+  right:0;
+  font-size: 9px;
+}

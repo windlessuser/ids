@@ -16,12 +16,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-  <link rel="shortcut icon" href="/esub3/favicon.ico">
-  <link rel="apple-touch-icon" href="/esub3/apple-touch-icon.png">
+  <link rel="shortcut icon" href=" <?php echo site_url('favicon.ico'); ?>">
+  <link rel="apple-touch-icon" href="<?php echo site_url('apple-touch-icon.png'); ?>">
 
 
   <!-- CSS : implied media="all" -->
-  <link rel="stylesheet" href="css/style.css?v=2">
+    <link href="<?php echo site_url('css/screen.css'); ?>" media="screen, projection" rel="stylesheet" type="text/css" />
+  	<link href="<?php echo site_url('css/print.css'); ?>" media="print" rel="stylesheet" type="text/css" />
+  <!--[if IE]>
+      <link href="/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <![endif]-->
 
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
@@ -33,7 +37,17 @@
 
 <body>
 
-  <div id="container">
+
     <header>
-     
+     <?php echo anchor(site_url('admin'),'<img src ="http://caribtechjm.com/sites/default/files/theme165_logo.png" />');
+	$user = $this->session->userdata('user');
+	if(strlen($user)): 
+	?>
+      	<user_data>
+	 	<?php echo 'Welcome ' . $this->session->userdata('user') . " "; echo anchor(site_url('admin/logout'),'Logout'); ?>
+		<br>
+		 <?php echo'Current zone: ' .anchor(site_url('zone'), $this->session->userdata('zone')); ?>
+	</user_data>
+	<?php endif; ?>
     </header>
+    <?php flush(); ?>

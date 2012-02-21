@@ -1,27 +1,4 @@
-/* Author: Marc Byfield
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Author: 
+ * Marc Byfield & Matthew Budram.
+ */
+ 
