@@ -6,6 +6,7 @@ class Flight_Model extends CI_Model {
         parent::__construct();
         $this->airportparam = isset($_GET["airportcode"]) ? strtolower($_GET["airportcode"]) : null;
 		$this->directionparam = isset($_GET["direction"]) ? strtolower($_GET["direction"]) : null;
+		$this->update_cache();
     }
     
     var $url = "http://www.flightstats.com/go/WebResources/webletAirportFIDSUpdate.do?guid=";
@@ -22,16 +23,17 @@ class Flight_Model extends CI_Model {
 	//'get' parameters
 	var $airportparam = "";
 	var $directionparam = "";
+	var  $kin_arive;
+	var  $kin_dept;
 	
 	
-	function flightXML($url)
+	function flightXML($feed)
 	{
-		$feed = simplexml_load_file($url);
 		$xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 		$xml .= "<table>";
 		if(isset($feed)){
 			if(isset($_GET["num"])){
-				$id = (is_numeric($_GET["num"]) && ((int)$_GET["num"]  - 1 < count($feed->Children()) - 1) ) ? (int)$_GET["num"] - 1 : 0;
+				$id = (is_numeric($_GET["num"])) ? (int)$_GET["num"] - 1 : 0;
 				$feed = $this->simpleXMLToArray($feed,"Flight");
 				$xml .= "\n\t<row>";
 				foreach($feed['Flight'][$id]['Flight'] as $a => $b)
@@ -67,27 +69,34 @@ class Flight_Model extends CI_Model {
 		Query example: ?airportcode=kin&direction=departures</span>');
 	}
 	
+	function update_cache(){
+		$this->cache->write(simplexml_load_file($this->url . $this->normanArrGUID)->asXML(), 'kin_arive',360);
+		$this->kin_arive = new SimpleXMLElement($this->cache->get('kin_arive'));
+		$this->cache->write(simplexml_load_file($this->url . $this->normanDepGUID)->asXML(), 'kin_dept',360);
+		$this->kin_dept = new SimpleXMLElement($this->cache->get('kin_dept'));
+	}
+	
 	function get_kin_dept(){
-		return $this->flightXML($this->url . $this->normanDepGUID);
+		return $this->flightXML($this->kin_dept);
 	}
 	
 	function get_kin_dept_id(){
-		return $this->flightXML($this->url . $this->normanDepGUID);
+		return $this->flightXML($this->kin_dept);
 	}
 	
 	function get_kin_ariv(){
-		return $this->flightXML($this->url . $this->normanArrGUID);
+		return $this->flightXML($this->kin_dept_arive);
 	}
 	
 	function get_kin_ariv_id(){
-		return $this->flightXML($this->url . $this->normanArrGUID);
+		return $this->flightXML($this->kin_arive);
 	}
 	
 	function get_mbj_dept(){
 		return $this->flightXML($this->url . $this->$sangsterDepGUID);
 	}
 	
-	function get_mbj_dep_idt(){
+	function get_mbj_dep_id(){
 		return $this->flightXML($this->url . $this->$sangsterDepGUID);
 	}
 	
@@ -149,8 +158,7 @@ class Flight_Model extends CI_Model {
 	    if($attributes){ 
 	        if($attributesKey){$return[$attributesKey] = $attributes;} 
 	        else{$return = array_merge($return, $attributes);} 
-	    } 
-	
+	    } 	
 	    return $return; 
 	} 
 }
