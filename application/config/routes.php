@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "admin";
 $route['404_override'] = '';
+$route['flightstats'] = 'flight/index';
 
 
 /* End of file routes.php */
