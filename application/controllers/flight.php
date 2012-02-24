@@ -23,30 +23,14 @@ class Flight Extends CI_Controller {
 	    		$directionparam = strtolower($_GET["direction"]);
 	    		if ($airportparam == $this->norman_manley_code)
 					if ($directionparam == $this->arrivals)
-						if(isset($_GET["num"]))
-							//$feed = $this->cache->model('flight_model','get_kin_ariv_id', '', 360);
-							$feed = $this->flight_model->get_kin_ariv_id();
-						else
-							//$feed = $this->cache->model('flight_model','get_kin_ariv', '', 360);
-							$feed = $this->flight_model->get_kin_ariv();
-					elseif ($directionparam == $this->departures)
-						if(isset($_GET["num"]))
-							//$feed = $this->cache->model('flight_model','get_kin_dept_id', '', 360);
-							$feed = $this->flight_model->get_kin_dept_id();
-						else
-							//$feed = $this->cache->model('flight_model','get_kin_dept', '', 360);
-							$feed = $this->flight_model->get_kin_dept();
-				elseif(($airportparam == $this->$sangster_code))
+						$feed = $this->flight_model->get_kin_ariv();
+					elseif($directionparam == $this->departures)
+						$feed = $this->flight_model->get_kin_dept();
+				elseif($airportparam == $this->sangster_code)
 					if ($directionparam == $this->arrivals)
-						if(isset($_GET["num"]))
-							$feed = $this->cache->model('flight_model','get_mbj_ariv_id', '', 360);
-						else
-							$feed = $this->cache->model('flight_model','get_mbj_ariv', '', 360);
-					elseif ($directionparam == $this->departures)
-						if(isset($_GET["num"]))
-							$feed = $this->cache->model('flight_model','get_mbj_dept_id', '', 360);
-						else
-							$feed = $this->cache->model('flight_model','get_mbj_dept', '', 360);
+						$feed = $this->flight_model->get_mbj_ariv();
+					elseif($directionparam == $this->departures)
+						$feed = $this->flight_model->get_mbj_dept();
 			}
 			else
 				$feed = null;

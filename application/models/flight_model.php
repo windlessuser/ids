@@ -6,7 +6,6 @@ class Flight_Model extends CI_Model {
         parent::__construct();
         $this->airportparam = isset($_GET["airportcode"]) ? strtolower($_GET["airportcode"]) : null;
 		$this->directionparam = isset($_GET["direction"]) ? strtolower($_GET["direction"]) : null;
-		$this->update_cache();
     }
     
     var $url = "http://www.flightstats.com/go/WebResources/webletAirportFIDSUpdate.do?guid=";
@@ -39,6 +38,17 @@ class Flight_Model extends CI_Model {
 				foreach($feed['Flight'][$id]['Flight'] as $a => $b)
 					$xml .= "\n\t\t<" . $a .">" . $b . "</" . $a . ">";
 				$xml .= "\n\t</row>";
+			}
+			elseif(isset($_GET["from"]) && isset($_GET["to"])){
+				$from = (is_numeric($_GET["from"])) ? (int)$_GET["from"] - 1 : 0;
+				$to = (is_numeric($_GET["to"])) ? (int)$_GET["to"] - 1 : 0;
+				$feed = $this->simpleXMLToArray($feed,"Flight");
+				for($from; $from <= $to; $from++){
+					$xml .= "\n\t<row>";
+					foreach($feed['Flight'][$from]['Flight'] as $a => $b)
+						$xml .= "\n\t\t<" . $a .">" . $b . "</" . $a . ">";
+					$xml .= "\n\t</row>";
+				}
 			}	
 			else{ 
 				foreach($feed->children() as $flight)
@@ -79,16 +89,8 @@ class Flight_Model extends CI_Model {
 	function get_kin_dept(){
 		return $this->flightXML($this->kin_dept);
 	}
-	
-	function get_kin_dept_id(){
-		return $this->flightXML($this->kin_dept);
-	}
-	
+		
 	function get_kin_ariv(){
-		return $this->flightXML($this->kin_dept_arive);
-	}
-	
-	function get_kin_ariv_id(){
 		return $this->flightXML($this->kin_arive);
 	}
 	
@@ -96,19 +98,10 @@ class Flight_Model extends CI_Model {
 		return $this->flightXML($this->url . $this->$sangsterDepGUID);
 	}
 	
-	function get_mbj_dep_id(){
-		return $this->flightXML($this->url . $this->$sangsterDepGUID);
-	}
-	
 	function get_mbj_ariv(){
 		return $this->flightXML($this->url . $this->$sangsterArrGUID);
 	}
-	
-	function get_mbj_ariv_id(){
-		return $this->flightXML($this->url . $this->$sangsterArrGUID);
-	}
-	
-	
+		
 	function simpleXMLToArray(SimpleXMLElement $xml,$attributesKey=null,$childrenKey=null,$valueKey=null){ 
 
 	    if($childrenKey && !is_string($childrenKey)){$childrenKey = '@children';} 
